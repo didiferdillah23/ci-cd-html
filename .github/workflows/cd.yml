@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout the files
+      uses: actions/checkout@v2
+      
     - name: Setup SSH Agent
       uses: webfactory/ssh-agent@v0.9.0
       with:
@@ -25,14 +28,6 @@ jobs:
     - name: Deploy to Server
       run: |
         cd /var/www/html
-        echo "Host name: $(hostname)"
-
-        PUBLIC_IPV4=$(curl -s https://api.ipify.org?format=text)
-        echo "Public IPv4 Address: $PUBLIC_IPV4"
-          
-        # List only directories
-        echo "Folders in HTML directory:"
-        ls
-        # sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
+        sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
       env:
         SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

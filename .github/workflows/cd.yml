@@ -27,8 +27,8 @@ jobs:
         cd /var/www/html
         echo "Host name: $(hostname)"
 
-        PUBLIC_IP=$(curl -s ifconfig.me)
-        echo "Public IP Address: $PUBLIC_IP"
+        PUBLIC_IPV4=$(curl -s https://api.ipify.org?format=text)
+        echo "Public IPv4 Address: $PUBLIC_IPV4"
           
         # List only directories
         echo "Folders in HTML directory:"

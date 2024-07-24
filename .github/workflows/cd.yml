@@ -24,7 +24,7 @@ jobs:
 
     - name: Deploy to Server
       run: |
-        cd /var/www/html/ci-cd-html/
+        cd /var/www/html/ci-cd-html
         touch index2.html
         # git pull origin main
         # git status

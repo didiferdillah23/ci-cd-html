@@ -29,7 +29,7 @@ jobs:
           
         # List only directories
         echo "Folders in HTML directory:"
-        ls -l | grep ^d
+        ls
         # sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
       env:
         SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

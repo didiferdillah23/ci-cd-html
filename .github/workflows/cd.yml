@@ -14,4 +14,4 @@ jobs:
 
     - name: Deploy to server
       run: |
-        ssh admin@13.211.53.51 "echo 'Deployment successful'"
+        ssh admin@13.211.53.51 "echo 'Deployment successfull'"

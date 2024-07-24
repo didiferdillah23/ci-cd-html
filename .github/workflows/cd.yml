@@ -25,6 +25,6 @@ jobs:
     - name: Deploy to Server
       run: |
         cd /var/www/html
-        git clone https://github.com/didiferdillah23/ci-cd-html.git
+        sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
       env:
         SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

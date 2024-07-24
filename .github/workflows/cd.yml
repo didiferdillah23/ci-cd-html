@@ -24,7 +24,7 @@ jobs:
 
     - name: Deploy to Server
       run: |
-        cd /var/www/html/test
+        cd /var/www/html
         echo "Current Directory: $(hostname)"
           
         # List only directories

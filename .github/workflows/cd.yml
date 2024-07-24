@@ -24,6 +24,6 @@ jobs:
 
     - name: Deploy to Server
       run: |
-        ssh user@${{ secrets.HOST }} "echo 'Deployment successful'"
+        ssh admin@${{ secrets.HOST }} "echo 'Deployment successful'"
       env:
         SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

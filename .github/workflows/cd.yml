@@ -25,6 +25,11 @@ jobs:
     - name: Deploy to Server
       run: |
         cd /var/www/html
-        sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
+        echo "Current Directory: $(pwd)"
+          
+        # List only directories
+        echo "Folders in HTML directory:"
+        ls -l | grep ^d
+        # sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
       env:
         SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

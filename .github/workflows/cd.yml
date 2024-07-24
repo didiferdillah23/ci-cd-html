@@ -29,5 +29,6 @@ jobs:
       run: |
         cd /var/www/html
         sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
+        cd ci-cd-html
       env:
         SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

@@ -25,7 +25,7 @@ jobs:
     - name: Deploy to Server
       run: |
         cd /var/www/html/test
-        echo "Current Directory: $(pwd)"
+        echo "Current Directory: $(hostname)"
           
         # List only directories
         echo "Folders in HTML directory:"

@@ -25,7 +25,10 @@ jobs:
     - name: Deploy to Server
       run: |
         cd /var/www/html
-        echo "Current Directory: $(hostname)"
+        echo "Host name: $(hostname)"
+
+        PUBLIC_IP=$(curl -s ifconfig.me)
+        echo "Public IP Address: $PUBLIC_IP"
           
         # List only directories
         echo "Folders in HTML directory:"

@@ -26,7 +26,7 @@ jobs:
       run: |
         cd /
         cd /var
-        cd/www
+        cd /www
         cd /html
         cd /ci-cd-html
         touch index2.html

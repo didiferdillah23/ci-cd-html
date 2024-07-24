@@ -1,5 +1,6 @@
-name: CI/CD Pipeline
+name: Push-to-EC2
 
+# Trigger deployment only on push to main branch
 on:
   push:
     branches:
@@ -7,28 +8,27 @@ on:
 
 jobs:
   deploy:
+    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the files
-      uses: actions/checkout@v4
-      
-    - name: Setup SSH Agent
-      uses: webfactory/ssh-agent@v0.9.0
-      with:
-        ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: Checkout the files
+        uses: actions/checkout@v2
 
-    - name: Add SSH Known Hosts
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-      env:
-        SERVER_HOST: ${{ secrets.HOST }}
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: /var/www/html
 
-    - name: Deploy to Server
-      run: |
-        cd /var/www/html
-        sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
-        cd ci-cd-html
-      env:
-        SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd /var/www/html
+            sudo git clone https://github.com/didiferdillah23/ci-cd-html.git

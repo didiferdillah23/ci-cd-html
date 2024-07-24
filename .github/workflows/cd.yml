@@ -25,7 +25,8 @@ jobs:
     - name: Deploy to Server
       run: |
         cd /var/www/html/ci-cd-html/
-        git pull origin main
-        git status
+        touch index2.html
+        # git pull origin main
+        # git status
       env:
         SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}

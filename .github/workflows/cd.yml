@@ -20,14 +20,14 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.HOST }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
+          REMOTE_USER: admin@13.211.53.51
           TARGET: /var/www/html
 
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          username: admin@13.211.53.51
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             cd /var/www/html

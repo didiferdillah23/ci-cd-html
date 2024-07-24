@@ -28,7 +28,7 @@ jobs:
         cd var/
         cd www/
         cd html/
-        cd test
+        cd test/
         sudo touch index2.html
         # git pull origin main
         # git status

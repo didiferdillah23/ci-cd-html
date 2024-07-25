@@ -21,9 +21,9 @@ jobs:
     - name: Add SSH Known Hosts
       run: |
         mkdir -p ~/.ssh
-        ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ secrets.HOST_DNS }} >> ~/.ssh/known_hosts
       env:
-        SERVER_HOST: ${{ secrets.HOST }}
+        SERVER_HOST: ${{ secrets.HOST_DNS }}
 
     - name: Deploy to Server
       run: |

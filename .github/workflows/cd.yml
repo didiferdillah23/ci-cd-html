@@ -1,35 +1,19 @@
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+name: remote ssh command
+on: [push]
 jobs:
+
   build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Ensures full repository clone, required for submodules and LFS.
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.7.0
-        with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
-
-      - name: Verify SSH setup
-        run: |
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          ssh -T git@github.com || true
-
-      - name: run
-        run: |
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.HOST_DNS }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.EC2_SSH_KEY }}
+        port: 22
+        script: |
           sudo apt-get -y update
           sudo apt-get install -y apache2
           sudo systemctl start apache2

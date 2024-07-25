@@ -27,8 +27,11 @@ jobs:
 
     - name: Deploy to Server
       run: |
-        cd /var/www/html
-        sudo git clone https://github.com/didiferdillah23/ci-cd-html.git
-        cd ci-cd-html
+       sudo apt-get -y update
+       sudo apt-get install -y apache2
+       sudo systemctl start apache2
+       sudo systemctl enable apache2
+       cd home
+       sudo mv * /var/www/html
       env:
         SSH_KNOWN_HOSTS: 22

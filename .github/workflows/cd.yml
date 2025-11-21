@@ -39,4 +39,5 @@ jobs:
         echo "  ProxyCommand cloudflared access ssh --hostname %h" >> ~/.ssh/config
 
         # Eksekusi (Pake sshpass buat login password)
-        sshpass -p "$ss_pass" ssh deploy-target "cd /var/www/html/ci-cd-html && echo 'Login Sukses' && git remote -v"
+        sshpass -p "$ss_pass" ssh deploy-target "cd /var/www/html/ci-cd-html && echo 'Login Sukses' && git init && git pull https://github.com/didiferdillah23/jwt-php-native.git"
+        
